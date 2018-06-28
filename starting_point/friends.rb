@@ -1,58 +1,67 @@
+
+# 1.
 def get_name(person)
   return person[:name]
 end
 
+
+# 2.
 def fav_tv_show(person)
   return person[:favourites][:tv_show]
 end
 
+
+# 3.
 def check_if_like_food(person, food)
-  #person[:favourites][:snacks] == food ? true : false
-  if person[:favourites][:snacks][0] == food
+  if person[:favourites][:snacks].include?(food)
     return true
   else
     return false
   end
 end
 
-def check_if_like_food_multiple(person, food1, food2)
-  if person[:favourites][:snacks][0] == food1 && person[:favourites][:snacks][1] == food2
-    return true
-  else
-    return false
-  end
-end
 
-def adding_friends(person, friend)
+# 4.
+def add_friend(person, friend)
   person[:friends].push(friend)
 end
 
-def remove_friends(person, friend)
+
+# 5.
+def remove_friend(person, friend)
   person[:friends].delete(friend)
 end
 
-# def pizza_money(people)
-#   pizza_money_total = 0
-#   for person in people
-#     return pizza_money_total += person[:monies]
-#   end
-# end
 
-def pizza_money(people)
-  pizza_money_total = 0
+# 6.
+def total_money(people)
+  money_total = 0
   for person in people
-    pizza_money_total += person[:monies]
+    money_total += person[:monies]
   end
-  return pizza_money_total
+  return money_total
 end
 
+
+# 7.
 def loan_money_from_to(lender, lendee, amount)
   lender[:monies] -= amount
   lendee[:monies] += amount
-  return lendee[:monies]
 end
 
-def if_friends_is_zero(people)
+
+# 8.
+def all_fav_foods(people)
+  fav_foods_array = []
+  for person in people
+    fav_foods_array += person[:favourites][:snacks]
+  end
+  return fav_foods_array
+end
+
+
+# 9.
+def friends_is_zero(people)
   lonelies = []
   for person in people
     if person[:friends].length == 0
